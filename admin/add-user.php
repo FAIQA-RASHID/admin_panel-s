@@ -31,31 +31,12 @@
             if(isset($_POST["save"]))
             {
             if (mysqli_num_rows($result) > 0) {
-                echo `
-                <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>`;
+              echo 'User already exist';
             } else {
                 include "config.php";
                 $query = "INSERT INTO `user`(`first_name`, `last_name`, `username`, `password`, `role`) VALUES ('{$user_fname}','{$user_lname}','{$user_name}','{$user_password}','{$user_role}')";
                 mysqli_query($conn, $query);
-                header("location:http://localhost:83/kj/admin/users.php");
+                header("location:http://localhost:82/kj/admin/users.php");
             }
         }
 
