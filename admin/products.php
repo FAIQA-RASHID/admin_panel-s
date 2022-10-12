@@ -4,16 +4,18 @@
 <?php
 
 include "config.php";
-$query = "SELECT * FROM `post`";
+
+ $query = "SELECT * FROM `post`
+LEFT JOIN user ON post.author = user.user_id
+LEFT JOIN category ON post.category = category.category_id";
+
+
+
 $result = mysqli_query($conn,$query);
+
 
 if(mysqli_num_rows($result)>0)
 {
-
-
-
-
-
 
 
 ?>
@@ -52,9 +54,9 @@ if(mysqli_num_rows($result)>0)
                           <tr>
                           <td class='id'><?php echo $row["post_id"] ?></td>
                           <td><?php echo $row["title"] ?></td>
-                              <td><?php echo $row["category"] ?></td>
+                              <td><?php echo $row["category_name"] ?></td>
                               <td><?php echo $row["post_date"] ?></td>
-                              <td><?php echo $row["author"] ?></td>
+                              <td><?php echo $row["username"] ?></td>
                            
                               <td class='edit'><a href='update-products.php?id=<?php echo $row["post_id"] ?>'><i class='fa fa-edit'></i></a></td>
                               <td class='delete'><a href='delete-products.php?id=<?php echo $row["post_id"] ?>'><i class='fa fa-trash-o'></i></a></td>

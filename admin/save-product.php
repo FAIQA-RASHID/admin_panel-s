@@ -51,4 +51,6 @@ VALUES ('$title','$discription','$category','$date','$author ','$file_name')";
 
 mysqli_query($conn,$query);
 }
+
+header("location: http://localhost:82/kj/admin/products.php")
 ?>
